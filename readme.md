@@ -9,15 +9,25 @@ Create a new repo on Bitbucket, copy-paste the instructions from there or do:
 cd /path/to/your/project
 git init 
 git remote add origin git@bitbucket.org:me/newrepo.git
+nano .gitignore # Do this now if you already have some files. Example below.
 git add . # add everything
 git commit # Initial commit
 git push -u origin --all # First push
 ```
+Whoops, did I set the wrong upstream url?
+```
+git remote -v # List upstream repos
+git remote set-url origin git@bitbucket.org:me/correct-repo.git
+```
 Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
 ```sh
+# Include the git-prompt (this isn't needed on some systems, but safe to do)
 source /etc/bash_completion.d/git-prompt
+
+# Show dirty state with * like this: (master *)$
+export GIT_PS1_SHOWDIRTYSTATE=1
 ```
-Then add `$(__git_ps1)` to the end of the prompt lines, something like:
+Then add `$(__git_ps1)` to the end of the prompt line, something like:
 ```sh
 PS1='${debian_chroot:[ ... ] \w\[\033[00m\]$(__git_ps1)\$ '
 ```
