@@ -1,0 +1,14 @@
+*.orig
+*.bak
+*.log
+*~
+# npm projects
+/node_modules
+# Visual Studio Code metadata
+/.vscode
+# Railo or Coldfusion metadata
+/WEB-INF
+# For TypeScript projects
+/app/**/*.js
+/app/**/*.map
+
