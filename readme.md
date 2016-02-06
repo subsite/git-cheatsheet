@@ -42,7 +42,7 @@ git clone git@bitbucket.org:me/somerepo.git
 # https:
 git clone https://me@bitbucket.org/me/somerepo.git
 ```
-Cloning will create a dir for the repo, no need to do it beforehand. In this case the repo dir will be `/path/to/dir/somerepo/`
+Cloning will create a dir for the repo, no need to do it beforehand. In this case the repo dir will be */path/to/dir/somerepo/*
 
 ## Branches and checkout
 ```sh
