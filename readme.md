@@ -56,6 +56,13 @@ git push -u origin my-branch # push local branch to Bitbucket
 git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
  # show branches with dates of last commit
 ```
+## Adding (staging)
+```sh
+git add path/file1 path/file2 # add these files
+git add . # add all new untracked files in current path
+git add -u . # add all deleted files in current path
+git add -A # add all new untracked and deleted files in current path
+```
 ## Commit
 ```sh
 git commit # Commit staged changes
@@ -83,12 +90,6 @@ When working on a web server with a devel and a production repo side by side, an
 https://github.com/subsite/misc-scripts/blob/master/pushpull
 It also includes some basic checking that will prevent you from doing something embarrassing.
 
-## Adding (staging)
-```sh
-git add . # add all new untracked files in current path
-git add -u . # add all deleted files in current path
-git add -A # add all new untracked and deleted files in current path
-```
 ## Log
 ```sh
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" # Concise with times
