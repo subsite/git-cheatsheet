@@ -148,6 +148,7 @@ Some basic excludes, save as `.gitignore` in your repo root.
 *~
 # npm projects
 /node_modules
+/bower_components
 # Visual Studio Code metadata
 /.vscode
 # Railo or Coldfusion metadata
