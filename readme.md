@@ -110,13 +110,13 @@ git cherry -v # Show unpushed commits
 ## Stash
 Stashing is useful when you want to temporary clean up modified files in your repo.
 ```sh
-git stash # stashes uncommitted files, makes working directory clean
-git stash apply # applies the stash to the current branch
-git stash branch newbranch # short for stash, checkout new branch, apply
+git stash # Stash uncommitted files, clean up working directory 
+git stash apply # Apply the stash to the current branch
+git stash branch newbranch # Short for stash, checkout new branch, apply
 git stash list # List stashes
 git stash apply stash@{2} # Apply second stash in list
-git stash show -p | git apply -R # un-apply last applied stash
-git stash show -p stash@{0} | git apply -R" # un-apply specific stash
+git stash show -p | git apply -R # Un-apply last applied stash
+git stash show -p stash@{0} | git apply -R" # Un-apply specific stash
 ```
 ## Undoing and restoring
 ```sh
@@ -137,7 +137,7 @@ Put aliases for useful commands in `~/.gitconfig`
 [alias]
         branchdiff = diff --name-status
         prettylog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
-        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorn$
+        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
 ```
 ## Gitignore
 Some basic excludes, save as `.gitignore` in your repo root.
