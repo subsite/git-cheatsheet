@@ -36,7 +36,7 @@ git push # Push all unpushed commits upstream
 ```sh
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
-(master|MERGING)$ git merge --abort # restore conflicting merge
+(master|MERGING)$ git merge --abort # abort merge process, reverts to pre-merge situation
 ```
 Fix conflicts manually by editing the file (or using some fancy mergetool), or, if the conflict is simple:
 ```sh
@@ -54,6 +54,7 @@ git log # List commits in current branch
 git log other-branch # List commits from another branch
 git log --follow path/to/file # All commits for specific file
 git show HEAD~1:path/to/file # Display file contents one commit back
+git show 835a0edccd:path/to/file # Display file contents specific commit
 ```
 ## Diff
 ```sh
@@ -76,19 +77,32 @@ git stash show -p | git apply -R # Un-apply last applied stash
 git stash show -p stash@{0} | git apply -R # Un-apply specific stash
 ```
 ## Undoing and restoring
+Git is fantastic for undoing things and restoring from its unlimited history, but only if you've told git about the changes you've made. Commit frequently!
+
+**Getting pre-restore info**
 ```sh
 git log # List commits and get keys (eg. 835a0edccd) to copy-paste
-git show HEAD~1:path/to/file # Show file of last commit
-git checkout 835a0edccd # Check out a commit
-git reset --hard 835a0edccd # Reset git to the situation of this commit
-git checkout 835a0edccd -- path/to/file # Get file from this commit, then: git commit
-git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means "as it was before committing", e.g. before the file was deleted
-git merge --abort # Abort a conflicting merge
+git log --follow path/to/file # All commits for specific file
+git show 835a0edccd:path/to/file # Display file contents specific commit
+```
+**Unstaged files**
+```sh
 git reset #	unstage added files
 git stash # Discard uncommited changes
-git cherry-pick 2e744aba6c # pick a specific commit from another branch
+```
+**Restoring specific files**
+```sh
+git checkout 835a0edccd -- path/to/file # Get file from this commit, then: git commit
+git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means "as it was before committing", e.g. before the file was deleted
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
-
+```
+**Reverting to a specific commit**
+```sh
+git cherry-pick 2e744aba6c # pick a specific commit from another branch
+git revert 835a0edccd # Revert to this commit without losing your history. Safest way to restore.
+git revert --abort # As with merge --abort, this lets you abort the process if it doesn't look good
+git checkout 835a0edccd # Check out a commit. 
+git reset --hard 835a0edccd # Reset to this commit. Removes subsequent commits, use revert if unsure.
 ```
 ## Setup 
 
