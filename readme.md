@@ -3,18 +3,6 @@ Yet another git cheatsheet. Pretty universal, but using Bitbucket as example for
 #
 [TOC]
 
-
-## Clone
-Copy the cloning address from Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to.
-```sh
-cd /path/to/dir
-# ssh:
-git clone git@bitbucket.org:me/somerepo.git 
-# https:
-git clone https://me@bitbucket.org/me/somerepo.git
-```
-Cloning will create a dir for the repo, no need to do it beforehand. In this case the repo dir will be */path/to/dir/somerepo/*
-
 ## Branches and checkout
 ```sh
 git branch # show branches
@@ -33,6 +21,7 @@ git add path/file1 path/file2 # add these files
 git add . # add all new untracked files in current path
 git add -u . # add all deleted files in current path
 git add -A # add all new untracked and deleted files in current path
+git reset #	unstage all added files
 ```
 ## Commit
 ```sh
@@ -40,6 +29,8 @@ git commit # Commit staged changes
 git commit -a # Stage and commit
 git commit --amend # Fix last commit, forgot to add files, typo in message etc.
 git commit --dry-run # See what will happen
+git cherry -v # List unpushed commits
+git push # Push all unpushed commits upstream
 ```
 ## Merging and conflicts
 ```sh
@@ -71,7 +62,7 @@ git diff my-branch other-branch # Show diff between branches
 git diff other-branch -- path/to/file # Specific file
 git diff --name-only my-branch other-branch # Show filenames of differing files
 git diff --name-status other-branch # List files with differences in another branch
-git cherry -v # Show unpushed commits
+git cherry -v # List unpushed commits
 ```
 ## Stash
 Stashing is useful when you want to temporary clean up modified files in your repo.
@@ -91,22 +82,22 @@ git show HEAD~1:path/to/file # Show file of last commit
 git checkout 835a0edccd # Check out a commit
 git reset --hard 835a0edccd # Reset git to the situation of this commit
 git checkout 835a0edccd -- path/to/file # Get file from this commit, then: git commit
-git checkout 835a0edccd^ -- path/to/file # Restore file deleten in this commit. Note the caret (^)
-git merge --abort # restore conflicting merge
+git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means "as it was before committing", e.g. before the file was deleted
+git merge --abort # Abort a conflicting merge
 git reset #	unstage added files
 git stash # Discard uncommited changes
 git cherry-pick 2e744aba6c # pick a specific commit from another branch
 ```
-## Conf and scripts
+## Setup 
 
-### Setup
-Create a new repo on Bitbucket, copy-paste the instructions from there or do:
+### Create new repository 
+Create the new repo on Bitbucket/Github, copy-paste the instructions from there or do:
 ```sh
 cd /path/to/your/project
 git init 
 git remote add origin git@bitbucket.org:me/newrepo.git
 nano .gitignore # Do this now if you already have some files. Example below.
-git add . # add everything
+git add . # add everything. Too many files? git reset, edit .gitignore, add again
 git commit # Initial commit
 git push -u origin --all # First push
 ```
@@ -115,6 +106,18 @@ Whoops, did I set the wrong upstream url?
 git remote -v # List upstream repos
 git remote set-url origin git@bitbucket.org:me/correct-repo.git
 ```
+### Clone an existing repository
+Copy the cloning address from Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to. 
+```sh
+cd /path/to/dir
+# ssh:
+git clone git@bitbucket.org:me/somerepo.git 
+# https:
+git clone https://me@bitbucket.org/me/somerepo.git
+```
+Cloning will create a directory for the repo, so do this from the path you want the repo to reside in.
+
+### Local environment
 Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
 ```sh
 # Include the git-prompt (this isn't needed on some systems, but safe to do)
@@ -146,10 +149,28 @@ Some basic excludes, save as `.gitignore` in your repo root.
 /app/**/*.js
 /app/**/*.map
 ```
+Sometimes you want to start ignoring files you've earlier tracked with git. Adding a line to gitignore won't be enough in this case, you also have to remove it from git's index with:
+```
+git rm --cached file/to/ignore
+```
+The `--cached` flag means "remove from git index only, don't remove from filesystem".
+
 ### Ninja style push-pull
-When working on a web server with a devel and a production repo side by side, and you get bored with doing `git push` [wait], `cd ../website; git pull` [wait], `cd ../website_devel` with my *push-pull*-script:
-https://github.com/subsite/misc-scripts/blob/master/pushpull
-It also includes some basic checking that will prevent you from doing something embarrassing.
+When working on a web server with a devel and a production repo side by side, and you get bored with doing this all the time:
+```sh
+www/site_devel (master)$ git push
+# wait...
+www/site_devel (master)$ cd ../site
+www/site (master)$ git pull
+# wait...
+www/site (master)$ cd ../site_devel/
+```
+Instead, you could use my *push-pull*-script, and simply do:
+```sh
+www/site_devel (master)$ git pushpull
+```
+The script shows which commits will be pushed and checks that you are in the correct dir and branch. The script is located at: https://github.com/subsite/misc-scripts/blob/master/pushpull
+
 ### Aliases
 Put aliases for useful commands in `~/.gitconfig`
 ```sh
