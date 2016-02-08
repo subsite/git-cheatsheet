@@ -87,6 +87,8 @@ git merge --abort # Abort a conflicting merge
 git reset #	unstage added files
 git stash # Discard uncommited changes
 git cherry-pick 2e744aba6c # pick a specific commit from another branch
+git checkout other-branch path/file1 path/file2 # pick specific files from another branch
+
 ```
 ## Setup 
 
