@@ -3,35 +3,6 @@ Yet another git cheatsheet. Pretty universal, but using Bitbucket as example for
 #
 [TOC]
 
-## Setup
-Create a new repo on Bitbucket, copy-paste the instructions from there or do:
-```sh
-cd /path/to/your/project
-git init 
-git remote add origin git@bitbucket.org:me/newrepo.git
-nano .gitignore # Do this now if you already have some files. Example below.
-git add . # add everything
-git commit # Initial commit
-git push -u origin --all # First push
-```
-Whoops, did I set the wrong upstream url?
-```
-git remote -v # List upstream repos
-git remote set-url origin git@bitbucket.org:me/correct-repo.git
-```
-Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
-```sh
-# Include the git-prompt (this isn't needed on some systems, but safe to do)
-source /etc/bash_completion.d/git-prompt
-
-# Show dirty state with * like this: (master *)$
-export GIT_PS1_SHOWDIRTYSTATE=1
-```
-Then add `$(__git_ps1)` to the end of the prompt line, something like:
-```sh
-PS1='${debian_chroot:[ ... ] \w\[\033[00m\]$(__git_ps1)\$ '
-```
-Uncomment the line `force_color_prompt=yes` while you're at it.
 
 ## Clone
 Copy the cloning address from Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to.
@@ -85,11 +56,6 @@ git checkout --ours path/to/file
 # Then:
 git commit -a
 ```
-## Ninja style push-pull
-When working on a web server with a devel and a production repo side by side, and you get bored with doing `git push` [wait], `cd ../website; git pull` [wait], `cd ../website_devel` with my *push-pull*-script:
-https://github.com/subsite/misc-scripts/blob/master/pushpull
-It also includes some basic checking that will prevent you from doing something embarrassing.
-
 ## Log
 ```sh
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" # Concise with times
@@ -131,15 +97,38 @@ git reset #	unstage added files
 git stash # Discard uncommited changes
 git cherry-pick 2e744aba6c # pick a specific commit from another branch
 ```
-## Aliases
-Put aliases for useful commands in `~/.gitconfig`
+## Conf and scripts
+
+### Setup
+Create a new repo on Bitbucket, copy-paste the instructions from there or do:
 ```sh
-[alias]
-        branchdiff = diff --name-status
-        prettylog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
-        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
+cd /path/to/your/project
+git init 
+git remote add origin git@bitbucket.org:me/newrepo.git
+nano .gitignore # Do this now if you already have some files. Example below.
+git add . # add everything
+git commit # Initial commit
+git push -u origin --all # First push
 ```
-## Gitignore
+Whoops, did I set the wrong upstream url?
+```
+git remote -v # List upstream repos
+git remote set-url origin git@bitbucket.org:me/correct-repo.git
+```
+Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
+```sh
+# Include the git-prompt (this isn't needed on some systems, but safe to do)
+source /etc/bash_completion.d/git-prompt
+
+# Show dirty state with * like this: (master *)$
+export GIT_PS1_SHOWDIRTYSTATE=1
+```
+Then add `$(__git_ps1)` to the end of the prompt line, something like:
+```sh
+PS1='${debian_chroot:[ ... ] \w\[\033[00m\]$(__git_ps1)\$ '
+```
+Uncomment the line `force_color_prompt=yes` while you're at it.
+### Gitignore
 Some basic excludes, save as `.gitignore` in your repo root.
 ```sh
 *.orig
@@ -156,4 +145,16 @@ Some basic excludes, save as `.gitignore` in your repo root.
 # For TypeScript projects like Angular2
 /app/**/*.js
 /app/**/*.map
+```
+### Ninja style push-pull
+When working on a web server with a devel and a production repo side by side, and you get bored with doing `git push` [wait], `cd ../website; git pull` [wait], `cd ../website_devel` with my *push-pull*-script:
+https://github.com/subsite/misc-scripts/blob/master/pushpull
+It also includes some basic checking that will prevent you from doing something embarrassing.
+### Aliases
+Put aliases for useful commands in `~/.gitconfig`
+```sh
+[alias]
+        branchdiff = diff --name-status
+        prettylog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
 ```
