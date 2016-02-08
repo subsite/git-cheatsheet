@@ -73,7 +73,7 @@ git stash branch newbranch # Short for stash, checkout new branch, apply
 git stash list # List stashes
 git stash apply stash@{2} # Apply second stash in list
 git stash show -p | git apply -R # Un-apply last applied stash
-git stash show -p stash@{0} | git apply -R" # Un-apply specific stash
+git stash show -p stash@{0} | git apply -R # Un-apply specific stash
 ```
 ## Undoing and restoring
 ```sh
