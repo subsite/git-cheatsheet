@@ -90,19 +90,25 @@ git show 835a0edccd:path/to/file # Display file contents specific commit
 git reset #	unstage added files
 git stash # Discard uncommited changes
 ```
-**Restoring specific files**
+**Restore specific files**
 ```sh
 git checkout 835a0edccd -- path/to/file # Get file from this commit, then: git commit
 git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means "as it was before committing", e.g. before the file was deleted
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
 ```
-**Reverting to or restoring a specific commit**
+**Revert to or restore a specific commit**
 ```sh
 git cherry-pick 2e744aba6c # pick a specific commit from another branch
 git revert 835a0edccd # Revert to this commit without losing your history. Safest way to restore.
 git revert --abort # As with merge --abort, this lets you abort the process if it doesn't look good
 git checkout -b newbranch 835a0edccd # Check out a new branch created from this commit
 git reset --hard 835a0edccd # Reset to this commit. Removes subsequent commits, use revert if unsure.
+```
+**Revert to upstream situation **
+```sh
+git fetch origin # fetch everything from upstream 
+git reset --hard origin/master # Reset to this
+
 ```
 ## Setup 
 
