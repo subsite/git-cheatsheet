@@ -174,6 +174,7 @@ Some basic excludes, save as `.gitignore` in your repo root.
 Sometimes you want to start ignoring files you've earlier tracked with git. Adding a line to gitignore won't be enough in this case, you also have to remove it from git's index with:
 ```
 git rm --cached file/to/ignore
+git rm -r 'app/*.js' # recursive wildcard, note single quotes
 ```
 The `--cached` flag means "remove from git index only, don't remove from filesystem".
 
