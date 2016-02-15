@@ -147,6 +147,10 @@ git clone https://me@bitbucket.org/me/somerepo.git
 ```
 Cloning will create a directory for the repo, so do this from the path you want the repo to reside in.
 
+Clone just one remote branch into a new repository
+```
+git clone git@bitbucket.org:me/somerepo.git -b some-branch --single-branch /path/to/new_repo
+```
 ### Local environment
 Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
 ```sh
