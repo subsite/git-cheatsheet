@@ -55,6 +55,21 @@ I changed my mind, I don't want to merge yet:
 ```sh
 (master|MERGING)$ git merge --abort # abort merge process, revert to pre-merge situation
 ```
+### Merge keeping certain files
+Ok, so you want to merge in another branch, but you have some content you want to keep:
+
+First do
+```
+git config --global merge.ours.driver true # Adds properties to ~/.gitconfig
+```
+The create the file `.gitattributes` in your repo, adding for example:
+```sh
+#file: .gitattributes
+content/** merge=ours
+app/app.html merge=ours
+.gitignore merge=ours
+```
+Now you can merge without these files being overwritten.
 
 ## Log
 ```sh
