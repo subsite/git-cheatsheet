@@ -161,15 +161,15 @@ Some basic excludes, save as `.gitignore` in your repo root.
 *.log
 *~
 # npm projects
-/node_modules
-/bower_components
+node_modules
+bower_components
 # Visual Studio Code metadata
-/.vscode
+.vscode
 # Railo or Coldfusion metadata
-/WEB-INF
+WEB-INF
 # For TypeScript projects like Angular2
-/app/**/*.js
-/app/**/*.map
+app/**/*.js
+app/**/*.map
 ```
 Sometimes you want to start ignoring files you've earlier tracked with git. Adding a line to gitignore won't be enough in this case, you also have to remove it from git's index with:
 ```
