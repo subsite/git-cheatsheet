@@ -32,13 +32,17 @@ git commit --dry-run # See what will happen
 git cherry -v # List unpushed commits
 git push # Push all unpushed commits upstream
 ```
-## Merging and conflicts
+## Merging
 ```sh
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
-(master|MERGING)$ git merge --abort # abort merge process, reverts to pre-merge situation
+git checkout other-branch path/file1 path/file2 # pick specific files from another branch
+
 ```
-Fix conflicts manually by editing the file (or using some fancy mergetool), or, if the conflict is simple:
+### Dealing with conflicts
+
+
+Fix conflicts manually by editing the file (or using some fancy merge tool), or, if the conflict is simple:
 ```sh
 # Option 1, the correct file is in the other branch:
 git checkout --theirs path/to/file
@@ -47,6 +51,11 @@ git checkout --ours path/to/file
 # Then:
 git commit -a
 ```
+I changed my mind, I don't want to merge yet:
+```sh
+(master|MERGING)$ git merge --abort # abort merge process, revert to pre-merge situation
+```
+
 ## Log
 ```sh
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" # Concise with times
@@ -61,7 +70,6 @@ git show 835a0edccd:path/to/file # Display file contents specific commit
 git diff # Show changes since last commit
 git diff my-branch other-branch # Show diff between branches
 git diff other-branch -- path/to/file # Specific file
-git diff --name-only my-branch other-branch # Show filenames of differing files
 git diff --name-status other-branch # List files with differences in another branch
 git cherry -v # List unpushed commits
 ```
