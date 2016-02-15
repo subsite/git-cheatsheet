@@ -37,7 +37,7 @@ git push # Push all unpushed commits upstream
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
-
+git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version (theirs) for the other branch
 ```
 ### Dealing with conflicts
 
