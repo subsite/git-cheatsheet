@@ -1,5 +1,5 @@
 # Git Cheatsheet
-Yet another git cheatsheet. Pretty universal, but using Bitbucket as example for all upstream repositories. Github works the same way. 
+Yet another git cheatsheet.
 
  * [Git Cheatsheet](#git-cheatsheet)
     * [Branches and checkout](#branches-and-checkout)
@@ -30,7 +30,7 @@ git checkout my-branch # check out branch "my-branch"
 git checkout -b my-branch # create a branch and checkout
 git checkout other-branch /path/to/file # check out file from other branch
 git branch -d my-branch # delete local branch
-git push -u origin my-branch # push local branch to Bitbucket
+git push -u origin my-branch # push local branch upstream
 git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
  # show branches with dates of last commit
 ```
@@ -56,7 +56,9 @@ git push # Push all unpushed commits upstream
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
-git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version (theirs) for the other branch
+git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version (theirs) for the other
+branch
+git merge --squash other-branch # squash all commits to one big before merge. Don't use if you intend to merge back... 
 ```
 ### Dealing with conflicts
 
@@ -159,7 +161,7 @@ Create the new repo on Bitbucket/Github, copy-paste the instructions from there 
 ```sh
 cd /path/to/your/project
 git init 
-git remote add origin git@bitbucket.org:me/newrepo.git
+git remote add origin git@github.com:me/newrepo.git
 nano .gitignore # Do this now if you already have some files. Example below.
 git add . # add everything. Too many files? git reset, edit .gitignore, add again
 git commit # Initial commit
@@ -168,22 +170,22 @@ git push -u origin --all # First push
 Whoops, did I set the wrong upstream url?
 ```
 git remote -v # List upstream repos
-git remote set-url origin git@bitbucket.org:me/correct-repo.git
+git remote set-url origin git@github.com:me/correct-repo.git
 ```
 ### Clone an existing repository
-Copy the cloning address from Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to. 
+Copy the cloning address from Github/Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to. 
 ```sh
 cd /path/to/dir
 # ssh:
-git clone git@bitbucket.org:me/somerepo.git 
+git clone git@github.com:me/somerepo.git 
 # https:
-git clone https://me@bitbucket.org/me/somerepo.git
+git clone https://me@github.com/me/somerepo.git
 ```
 Cloning will create a directory for the repo, so do this from the path you want the repo to reside in.
 
 Clone just one remote branch into a new repository
 ```
-git clone git@bitbucket.org:me/somerepo.git -b some-branch --single-branch /path/to/new_repo
+git clone git@github.com:me/somerepo.git -b some-branch --single-branch /path/to/new_repo
 ```
 ### Local environment
 Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
