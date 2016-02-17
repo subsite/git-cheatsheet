@@ -1,7 +1,5 @@
 # Git Cheatsheet
 Yet another git cheatsheet. Pretty universal, but using Bitbucket as example for all upstream repositories. Github works the same way. 
-#
-[TOC]
 
 ## Branches and checkout
 ```sh
