@@ -1,6 +1,27 @@
 # Git Cheatsheet
 Yet another git cheatsheet. Pretty universal, but using Bitbucket as example for all upstream repositories. Github works the same way. 
 
+ * [Git Cheatsheet](#git-cheatsheet)
+    * [Branches and checkout](#branches-and-checkout)
+    * [Adding (staging)](#adding-staging)
+    * [Commit](#commit)
+    * [Merging](#merging)
+      * [Dealing with conflicts](#dealing-with-conflicts)
+      * [Merge keeping certain files](#merge-keeping-certain-files)
+    * [Log](#log)
+    * [Diff](#diff)
+    * [Stash](#stash)
+    * [Undoing and restoring](#undoing-and-restoring)
+    * [Setup](#setup)
+      * [Create new repository](#create-new-repository)
+      * [Clone an existing repository](#clone-an-existing-repository)
+      * [Local environment](#local-environment)
+      * [Gitignore](#gitignore)
+      * [Ninja style push-pull](#ninja-style-push-pull)
+      * [Aliases](#aliases)
+
+
+
 ## Branches and checkout
 ```sh
 git branch # show branches
