@@ -12,6 +12,7 @@ Yet another git cheatsheet.
     * [Diff](#diff)
     * [Stash](#stash)
     * [Undoing and restoring](#undoing-and-restoring)
+    * [Tags](#tags)
     * [Setup](#setup)
       * [Create new repository](#create-new-repository)
       * [Clone an existing repository](#clone-an-existing-repository)
@@ -155,6 +156,19 @@ git reset --hard 835a0edccd # Reset to this commit. Removes subsequent commits, 
 git fetch origin # fetch everything from upstream 
 git reset --hard origin/master # Reset to this
 
+```
+## Tags
+Tags are good for release version numbers.
+```sh
+git tag # list tags
+git tag -a v1.4 -m "My version 1.4"
+git push --tags # push tags, pull --tags to pull
+```
+For npm projects, there's a cool auto versioning tool that both creates a git tag and updates the version of package.json. See https://docs.npmjs.com/cli/version
+```sh
+npm install version
+npm version patch -m "My new patch" # Bump the patch version e.g. 1.4.1 => 1.4.2 ( patch | minor | major )
+npm version v1.5.0 -m "My new version %s" # Bump the version explicitly. %s is a mask for the version
 ```
 ## Setup 
 
