@@ -56,7 +56,7 @@ git push # Push all unpushed commits upstream
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
-git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version (theirs) for the other
+git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version, "theirs" for the other
 branch
 git merge --squash other-branch # squash all commits to one big before merge. Don't use if you intend to merge back... 
 ```
@@ -69,8 +69,10 @@ Fix conflicts manually by editing the file (or using some fancy merge tool), or,
 git checkout --theirs path/to/file
 # Option 2, the correct file is in this branch
 git checkout --ours path/to/file
-# Then:
-git commit -a
+# Option 3
+git merge --abort # Abort the merge, then
+git merge --strategy-option ours other-branch # Automatically resolve conflicts to "ours" (or "theirs")
+# Finish the merge by adding and committing
 ```
 I changed my mind, I don't want to merge yet:
 ```sh
