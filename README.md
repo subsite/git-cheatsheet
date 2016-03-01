@@ -221,7 +221,7 @@ Uncomment the line `force_color_prompt=yes` while you're at it.
 
 ### Apache
 
-Remember to secure your git directory in the web server, Apache 2.4 in this case. Use apache2.conf for system wide effext. Might as well add some other stuff while you're at it:
+Remember to secure your git directory in the web server, Apache 2.4 in this case. Use apache2.conf for system wide effect. Might as well add some other stuff while you're at it:
 ```sh
 # Block all hidden files (.gitignore for example)
 <FilesMatch "^\.">
