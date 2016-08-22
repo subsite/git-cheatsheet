@@ -34,8 +34,7 @@ git checkout other-branch /path/to/file # check out file from other branch
 git branch -d my-branch # delete local branch
 git push -u origin my-branch # push local branch upstream
 git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
- # show branches with dates of last commit
- # (I usually alias this command in ~/.gitconfig: git branchlog
+ # list branches showing date (I usually alias this command in ~/.gitconfig: git branchlog)
 ```
 ## Adding (staging)
 ```sh
