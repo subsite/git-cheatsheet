@@ -127,6 +127,14 @@ git stash show -p stash@{0} | git apply -R # Un-apply specific stash
 ## Undoing and restoring
 Git is fantastic for undoing things and restoring from its unlimited history, but only if you've told git about the changes you've made. Commit frequently!
 
+**Undo accidental commit**
+
+When you did `git commit -a` and meant just to commit a single staged file. Or committed to the wrong branch.
+```sh
+git reset HEAD~ # Undo last commit, unstage changed files
+git reset --soft HEAD~ # As above, but leave the files staged. If you only want to change the message or something.
+```
+
 **Getting pre-restore info**
 ```sh
 git log # List commits and get keys (eg. 835a0edccd) to copy-paste
