@@ -323,5 +323,6 @@ echo "Updating $db_schemafile"
 db_schemafile="$(git rev-parse --show-toplevel)/$db_schemafile"
 pg_dump -h localhost -U $db_user -s -f \
         "$db_schemafile" $db_database
+git add "$db_schemafile"        
 ## Dump database schema DONE
 ```
