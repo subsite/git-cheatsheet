@@ -19,8 +19,10 @@ Yet another git cheatsheet.
       * [Local environment](#local-environment)
       * [Apache](#apache)
       * [Gitignore](#gitignore)
-      * [Ninja style push-pull](#ninja-style-push-pull)
       * [Aliases](#aliases)
+   * [Tricks](#tricks)
+      * [Ninja style push-pull](#ninja-style-push-pull)  
+      * [Database schema hook](#database-schema-hook)
 
 
 
@@ -278,7 +280,15 @@ git rm -r 'app/*.js' # recursive wildcard, note single quotes
 ```
 The `--cached` flag means "remove from git index only, don't remove from filesystem".
 
-
+### Aliases
+Put aliases for useful commands in `~/.gitconfig`
+```sh
+[alias]
+        branchdiff = diff --name-status
+        prettylog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
+```
+## Misc Tricks
 
 ### Ninja style push-pull
 When working on a web server with a devel and a production repo side by side, and you get bored with doing this all the time:
@@ -296,11 +306,22 @@ www/site_devel (master)$ git pushpull
 ```
 The script shows which commits will be pushed and checks that you are in the correct dir and branch. The script is located at: https://github.com/subsite/misc-scripts/blob/master/pushpull
 
-### Aliases
-Put aliases for useful commands in `~/.gitconfig`
+### Database schema-hook
+
+Wouldn't it be nice to have the changes you've made to the database included in the commit? One way is to dump the schema to a file in a pre-commit hook. (PostgreSQL shown here, for MySQL, look into the command `mysqldump --no-data`)
+
+Save the following in your repo as `.git/hooks/pre-commit` (or add to it if it exists):
 ```sh
-[alias]
-        branchdiff = diff --name-status
-        prettylog = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
-        branchlog = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
+#!/bin/sh
+
+## Dump database schema
+db_database="database_name"          # The database to dump
+db_user="database_user"              # The database user (password in ~/.pgpass)
+db_schemafile="database_schema.sql"; # File to contain the schema, relative to repo root
+#
+echo "Updating $db_schemafile"
+db_schemafile="$(git rev-parse --show-toplevel)/$db_schemafile"
+pg_dump -h localhost -U $db_user -s -f \
+        "$db_schemafile" $db_database
+## Dump database schema DONE
 ```
