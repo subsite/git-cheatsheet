@@ -310,6 +310,8 @@ The script shows which commits will be pushed and checks that you are in the cor
 
 Wouldn't it be nice to have the changes you've made to the database included in the commit? One way is to dump the schema to a file in a pre-commit hook. (PostgreSQL shown here, for MySQL, look into the command `mysqldump --no-data`)
 
+For a more manageable dump, you could use a script to split the dump into chunks by database object. This one here, for instance: https://github.com/subsite/misc-scripts/blob/master/split_pgdump.php
+
 Save the following in your repo as `.git/hooks/pre-commit` (or add to it if it exists):
 ```sh
 #!/bin/sh
@@ -317,11 +319,17 @@ Save the following in your repo as `.git/hooks/pre-commit` (or add to it if it e
 ## Dump database schema
 db_database="database_name"          # The database to dump
 db_user="database_user"              # The database user (password in ~/.pgpass)
-db_schemafile="database_schema.sql"; # File to contain the schema, relative to repo root
+db_schemafile="database/database_schema.sql"; # File to contain the schema, relative to repo root
+db_outdir="database/schema_files"    # OPTIONAL, for split_pgdump only
 #
 echo "Updating $db_schemafile"
 db_schemafile="$(git rev-parse --show-toplevel)/$db_schemafile"
 pg_dump -h localhost -U $db_user -s -f "$db_schemafile" $db_database
 git add "$db_schemafile"        
+
+# OPTIONAL, for split_pgdump only
+split_pgdump.php $db_schemafile $db_outdir
+git add $db_outdir/*
+
 ## Dump database schema DONE
 ```
