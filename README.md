@@ -217,6 +217,7 @@ git clone git@github.com:me/somerepo.git -b some-branch --single-branch /path/to
 ```
 ### Submodules
 
+https://github.com/blog/2104-working-with-submodules
 https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
 
 ### Local environment
