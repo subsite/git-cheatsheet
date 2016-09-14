@@ -16,6 +16,7 @@ Yet another git cheatsheet.
     * [Setup](#setup)
       * [Create new repository](#create-new-repository)
       * [Clone an existing repository](#clone-an-existing-repository)
+      * [Submodules](#submodules)
       * [Local environment](#local-environment)
       * [Apache](#apache)
       * [Gitignore](#gitignore)
@@ -214,6 +215,10 @@ Clone just one remote branch into a new repository
 ```
 git clone git@github.com:me/somerepo.git -b some-branch --single-branch /path/to/new_repo
 ```
+### Submodules
+
+https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
+
 ### Local environment
 Make the current branch visible in the prompt (Ubuntu/Debian). In `~/.bashrc` (somewhere before the prompt line) do:
 ```sh
