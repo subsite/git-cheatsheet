@@ -217,7 +217,25 @@ git clone git@github.com:me/somerepo.git -b some-branch --single-branch /path/to
 ```
 ### Submodules
 
-https://github.com/blog/2104-working-with-submodules
+Add a submodule to a repo (assuming the submodule already has an upstream repo):
+```
+~/myrepo/$ git submodule add git@github.com:me/mysubmod.git mysub # will add subdirectory ~/myrepo/mysubmod
+```
+
+Clone repo with submodule:
+```
+git clone git@github.com:me/myrepo.git --recursive
+
+# Submodule is in detached head mode, so checkout branch if you want to commit something:
+~/myrepo/$ cd mysubmod
+~/myrepo/mysubmod$ git checkout master 
+
+# if you forgot to clone --recursive, you can do:
+~/myrepo/$ git submodule update --init --recursive
+```
+
+See also:    
+https://github.com/blog/2104-working-with-submodules    
 https://chrisjean.com/git-submodules-adding-using-removing-and-updating/
 
 ### Local environment
