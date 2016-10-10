@@ -221,6 +221,23 @@ Add a submodule to a repo (assuming the submodule already has an upstream repo):
 ```
 ~/myrepo/$ git submodule add git@github.com:me/mysubmod.git mysub # will add subdirectory ~/myrepo/mysubmod
 ```
+Breakout existing dir into submodule (dir is named `app` in this example):
+
+```
+~/my_repo$ mv app ~/app_tmp # move Move "app" out the repo
+~/my_repo$ git commit -a # Commit the deletion af "app"
+
+# Go to github/bitbucket, greate a new repo "mysubmod"
+# Then go to the moved folder and init the repo there:
+~/app_tmp$ git init; git add .; git commit # The usual stuff, add .gitignore if needed
+~/app_tmp$ git remote add origin git@github.com:me/mysubmod.git 
+~/app_tmp$ git push -u origin master
+
+# If the submodule repo looks ok upstream, go back to the original repo:
+~/my_repo$ git submodule add git@github.com:me/mysubmod.git app # Clones the repo into app
+~/my_repo$ git commit -a
+~/my_repo$ git push
+```
 
 Clone repo with submodule:
 ```
@@ -233,6 +250,7 @@ git clone git@github.com:me/myrepo.git --recursive
 # if you forgot to clone --recursive, you can do:
 ~/myrepo/$ git submodule update --init --recursive
 ```
+
 
 See also:    
 https://github.com/blog/2104-working-with-submodules    
