@@ -107,6 +107,9 @@ git log other-branch # List commits from another branch
 git log --follow path/to/file # All commits for specific file
 git show HEAD~1:path/to/file # Display file contents one commit back
 git show 835a0edccd:path/to/file # Display file contents specific commit
+git log -S'foobar' # Find string 'foobar' in history
+git log -S'foobar' -- path/to/file # Find string 'foobar' in history of specific file
+
 ```
 ## Diff
 ```sh
