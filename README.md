@@ -347,7 +347,7 @@ www/site (master)$ cd ../site_devel/
 ```
 Instead, you could use my *push-pull*-script, and simply do:
 ```sh
-www/site_devel (master)$ git pushpull
+www/site_devel (master)$ pushpull
 ```
 The script shows which commits will be pushed and checks that you are in the correct dir and branch. The script is located at: https://github.com/subsite/misc-scripts/blob/master/pushpull
 
