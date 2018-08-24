@@ -61,9 +61,10 @@ git push # Push all unpushed commits upstream
 git pull # fetch and merge from upstream branch
 git merge other-branch # merge other branch into current branch
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
-git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version, "theirs" for the other
-branch
-git merge --squash other-branch # squash all commits to one big before merge. Don't use if you intend to merge back... 
+git merge --strategy-option ours other-branch # Automatically resolve conflicts with our version, 
+                                              # "theirs" for the other branch
+git merge --squash other-branch # squash all commits to one big one before merge. 
+                                # Don't use if you intend to merge back... 
 ```
 ### Dealing with conflicts
 
@@ -77,7 +78,7 @@ git checkout --ours path/to/file
 # Option 3
 git merge --abort # Abort the merge, then
 git merge --strategy-option ours other-branch # Automatically resolve conflicts to "ours" (or "theirs")
-# Finish the merge by adding and committing
+                                              # Finish the merge by adding and committing
 ```
 I changed my mind, I don't want to merge yet:
 ```sh
@@ -138,7 +139,8 @@ Git is fantastic for undoing things and restoring from its unlimited history, bu
 When you did `git commit -a` and meant just to commit a single staged file. Or committed to the wrong branch.
 ```sh
 git reset HEAD~ # Undo last commit, unstage changed files
-git reset --soft HEAD~ # As above, but leave the files staged. If you only want to change the message or something.
+git reset --soft HEAD~ # As above, but leave the files staged, 
+                       # if you only want to change the message or something.
 ```
 
 **Getting pre-restore info**
@@ -155,7 +157,8 @@ git stash # Discard uncommited changes
 **Restore specific files**
 ```sh
 git checkout 835a0edccd -- path/to/file # Get file from this commit, then: git commit
-git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means "as it was before committing", e.g. before the file was deleted
+git checkout 835a0edccd^ -- path/to/file # Restore file deleted in this commit. The caret (^) means
+                                         # "as it was before committing", e.g. before deletion
 git checkout other-branch path/file1 path/file2 # pick specific files from another branch
 ```
 **Revert to or restore a specific commit**
