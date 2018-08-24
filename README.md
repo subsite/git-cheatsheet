@@ -161,11 +161,15 @@ git checkout other-branch path/file1 path/file2 # pick specific files from anoth
 **Revert to or restore a specific commit**
 ```sh
 git cherry-pick 2e744aba6c # pick a specific commit from another branch
-git revert 835a0edccd # Revert to this commit without losing your history. Safest way to restore.
+git revert 835a0edccd # Undo this commit without losing anything else
+git revert a867b4af 25eee4ca 0766c053 # Revert a list of commits
+git revert a867b4af..0766c053 # Revert a range of commits
 git revert --abort # As with merge --abort, this lets you abort the process if it doesn't look good
 git checkout -b newbranch 835a0edccd # Check out a new branch created from this commit
 git reset --hard 835a0edccd # Reset to this commit. Removes subsequent commits, use revert if unsure.
 ```
+NOTE that revert apllies to the specified commit, while reset --hard keeps the specified commit and removes subsequent sommits.
+
 **Revert to upstream situation **
 ```sh
 git fetch origin # fetch everything from upstream 
