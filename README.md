@@ -100,6 +100,12 @@ app/app.html merge=ours
 ```
 Now you can merge without these files being overwritten.
 
+## Status
+Show status with timestamps (last modified)
+```sh
+IFS=''; git status -s | while read -n2 mode; read -n1; read file; do echo $mode $(stat -c %y "$file") $file; done|sort
+```
+
 ## Log
 ```sh
 git log --pretty=format:"%h%x09%an%x09%ad%x09%s" # Concise with times
