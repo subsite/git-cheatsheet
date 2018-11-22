@@ -103,7 +103,7 @@ Now you can merge without these files being overwritten.
 ## Status
 Show status with timestamps (last modified)
 ```sh
-IFS=''; git status -s | while read -n2 mode; read -n1; read file; do echo $mode $(stat -c %y "$file") $file; done|sort
+git status -s | while read -n2 mode; read -n1; read file; do echo $mode $(stat -c %y "$file") $file; done|sort
 ```
 
 ## Log
