@@ -21,7 +21,7 @@ Yet another git cheatsheet.
       * [Apache](#apache)
       * [Gitignore](#gitignore)
       * [Aliases](#aliases)
-   * [Tricks](#tricks)
+   * [Tricks](#misc-tricks)
       * [Ninja style push-pull](#ninja-style-push-pull)  
       * [Database schema hook](#database-schema-hook)
 
