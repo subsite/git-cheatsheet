@@ -319,6 +319,7 @@ Some basic excludes, save as `.gitignore` in your repo root.
 *.orig
 *.bak
 *.log
+*.tmp
 *~
 # npm projects
 node_modules
