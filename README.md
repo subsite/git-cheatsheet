@@ -124,6 +124,7 @@ git diff # Show changes since last commit
 git diff my-branch other-branch # Show diff between branches
 git diff other-branch -- path/to/file # Specific file
 git diff --name-status other-branch # List files with differences in another branch
+git diff --cached # List diff of staged files (double-check what you're about to commit)
 git cherry -v # List unpushed commits
 ```
 ## Stash
