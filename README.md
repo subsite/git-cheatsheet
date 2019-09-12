@@ -8,6 +8,7 @@ Yet another git cheatsheet.
     * [Merging](#merging)
       * [Dealing with conflicts](#dealing-with-conflicts)
       * [Merge keeping certain files](#merge-keeping-certain-files)
+    * [Status](#status)
     * [Log](#log)
     * [Diff](#diff)
     * [Stash](#stash)
