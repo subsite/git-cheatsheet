@@ -345,6 +345,9 @@ The `--cached` flag means "remove from git index only, don't remove from filesys
 
 ***HOWEVER***, the file WILL be deleted in another repository if you push-pull this commit there. So if you want to keep the file in the other repo, do the `git rm --cached` thing there as well (if too late, first restore the file with `git checkout HEAD^ file/to/ignore`).
 
+***Local exceptions to .gitignore***
+Local exceptions to .gitignore can be made in `.git/info/exclude` (same syntax as .gitignore). This is simpler than adding .gitignore to .gitignore, since it works immediately without the `git rm --cached` stuff.
+
 
 ### Aliases
 Put aliases for useful commands in `~/.gitconfig`
