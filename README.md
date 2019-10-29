@@ -227,6 +227,8 @@ Copy the cloning address from Github/Bitbucket, choose *ssh* for repos you inten
 cd /path/to/dir
 # ssh:
 git clone git@github.com:me/somerepo.git 
+# clone with submodules:
+git clone git@github.com:me/somerepo.git --recurse-submodules
 # https:
 git clone https://me@github.com/me/somerepo.git
 ```
@@ -262,13 +264,13 @@ Breakout existing dir into submodule (dir is named `app` in this example):
 
 Clone repo with submodule:
 ```
-git clone git@github.com:me/myrepo.git --recursive
+git clone git@github.com:me/myrepo.git --recurse-submodules
 
 # Submodule is in detached head mode, so checkout branch if you want to commit something:
 ~/myrepo/$ cd mysubmod
 ~/myrepo/mysubmod$ git checkout master 
 
-# if you forgot to clone --recursive, you can do:
+# if you forgot to clone with --recurse-submodules, you can do:
 ~/myrepo/$ git submodule update --init --recursive
 ```
 
