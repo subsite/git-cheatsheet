@@ -351,6 +351,8 @@ The `--cached` flag means "remove from git index only, don't remove from filesys
 ***Local exceptions to .gitignore***
 Local exceptions to .gitignore can be made in `.git/info/exclude` (same syntax as .gitignore). This is simpler than adding .gitignore to .gitignore, since it works immediately without the `git rm --cached` stuff.
 
+After adding modified files to `.git/info/exclude`, do `git update-index --assume-unchanged my_modified_file` to assume unchanged.
+
 
 ### Aliases
 Put aliases for useful commands in `~/.gitconfig`
