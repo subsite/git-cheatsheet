@@ -141,6 +141,8 @@ git stash list --date=short # List stashes with creation dates
 git stash apply stash@{2} # Apply second stash in list
 git stash show -p | git apply -R # Un-apply last applied stash
 git stash show -p stash@{0} | git apply -R # Un-apply specific stash
+git clean -dfn # Delete untracked files (d = also directories, n = dry-run (remove n when sure))
+
 ```
 ## Undoing and restoring
 Git is fantastic for undoing things and restoring from its unlimited history, but only if you've told git about the changes you've made. Commit frequently!
@@ -164,6 +166,7 @@ git show 835a0edccd:path/to/file # Display file contents specific commit
 ```sh
 git reset #	unstage added files
 git stash # Discard uncommited changes
+git clean -dfn # Delete untracked files (d = also directories, n = dry-run (remove n when sure))
 ```
 **Restore specific files**
 ```sh
