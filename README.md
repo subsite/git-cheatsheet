@@ -234,8 +234,10 @@ cat ~/.ssh/id_rsa.pub # displays your public key. It should look something like 
    aC1ycz7Xr1/9raqEhJ1fJDc6MQIp6JUswzHANJrG6VIR0
    O7bHPH54nnzteLhWti1KIlRbjDnXT+lsE6SCUNOSpLaoVQspL me@mymachine
 ```
-If you get "No such file or directory" you need to generate a key pair first, do this and the repeat the first step.
+If you get "No such file or directory" you need to generate a key pair first, do this and the repeat the first step. When you see the key, copy it to the clipboard (the whole thing starting with ssh-rsa).
+
 ```
+# SKIP THIS STEP if you already have managed to display and copy down the key.
 ssh-keygen # enter, enter, enter until done unless you want to change something. You now have a key pair, repeat the above step.
    
 ```
