@@ -16,6 +16,7 @@ Yet another git cheatsheet.
     * [Tags](#tags)
     * [Setup](#setup)
       * [Create new repository](#create-new-repository)
+      * [Set access rights to upstream repo](#set-access-rights-to-upstream-repo)
       * [Clone an existing repository](#clone-an-existing-repository)
       * [Submodules](#submodules)
       * [Local environment](#local-environment)
@@ -224,6 +225,23 @@ Whoops, did I set the wrong upstream url?
 git remote -v # List upstream repos
 git remote set-url origin git@github.com:me/correct-repo.git
 ```
+### Set access rights to upstream repo
+You need to upload your public SSH key in order to be able to push upstream. This is quite simple:
+```
+cat ~/.ssh/id_rsa.pub # displays your public key. It should look something like this (only longer):
+
+   ssh-rsa AAAAB3NzaC1ycz7Xr1/9raqEhJ1fJDc6MQIp6JUswzHANJrG6VIR0qahCege1/zWMJ1
+   aC1ycz7Xr1/9raqEhJ1fJDc6MQIp6JUswzHANJrG6VIR0
+   O7bHPH54nnzteLhWti1KIlRbjDnXT+lsE6SCUNOSpLaoVQspL me@mymachine
+```
+If you get "No such file or directory" you need to generate a key pair first, do this and the repeat the first step.
+```
+ssh-keygen # enter, enter, enter until done unless you want to change something. You now have a key pair, repeat the above step.
+   
+```
+In Github/Bitbucket, go to settings (either user wide or a certain repo), look for SSH keys, Access keys or some such and paste the key you just copied as a new access key. 
+
+
 ### Clone an existing repository
 Copy the cloning address from Github/Bitbucket, choose *ssh* for repos you intend to commit to and have uploaded your SSH key to, *https* for repos you only want to use or don't have write permissions to. 
 ```sh
