@@ -130,6 +130,7 @@ git diff --cached # List diff of staged files (double-check what you're about to
 git cherry -v # List unpushed commits
 git fetch; git diff ..origin/master # check diff before merge or pull
 git diff @{1}.. # What did I just merge in? - Post merge diff.
+git diff 1ab2d4..901p07 # Show diff between two commits
 ```
 ## Stash
 Stashing is useful when you want to temporary clean up modified files in your repo.
