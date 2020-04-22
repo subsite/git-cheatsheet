@@ -105,7 +105,7 @@ Now you can merge without these files being overwritten.
 ## Status
 Show status with timestamps (last modified)
 ```sh
-git status -s | while read -n2 mode; read -n1; read file; do echo $mode $(date -r "$file" "+%Y-%m-%d %H:M") $file; done|sort
+git status -s | while read -n2 mode; read -n1; read file; do echo $mode $(date -r "$file" "+%Y-%m-%d %H:%M") $file; done|sort
 ```
 
 ## Log
