@@ -35,6 +35,7 @@ git branch # show branches
 git branch --no-merged # show unmerged branches
 git checkout my-branch # check out branch "my-branch"
 git checkout -b my-branch # create a branch and checkout
+git checkout -b my-branch 0766c053 # create a branch from commit 0766c053 and checkout
 git checkout other-branch /path/to/file # check out file from other branch
 git branch -d my-branch # delete local branch
 git push -u origin my-branch # push local branch upstream
