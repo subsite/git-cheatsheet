@@ -275,7 +275,7 @@ Add a submodule to a repo (assuming the submodule already has an upstream repo):
 Breakout existing dir into submodule (dir is named `app` in this example):
 
 ```
-~/my_repo$ mv app ~/app_tmp # move Move "app" out the repo
+~/my_repo$ mv app ~/app_tmp # Move "app" out the repo
 ~/my_repo$ git commit -a # Commit the deletion af "app"
 
 # Go to github/bitbucket, greate a new repo "mysubmod"
