@@ -41,6 +41,7 @@ git branch -d my-branch # delete local branch
 git push -u origin my-branch # push local branch upstream
 git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'
  # list branches showing date (I usually alias this command in ~/.gitconfig: git branchlog)
+for i in $(git branch -r | grep -vE "^HEAD|master|main" | sed 's/^[ ]\+//'); do git switch --track $i; done # track all remote branches
 ```
 ## Adding (staging)
 ```sh
